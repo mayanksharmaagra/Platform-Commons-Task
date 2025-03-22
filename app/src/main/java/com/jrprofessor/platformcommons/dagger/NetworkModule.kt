@@ -1,9 +1,8 @@
 package com.jrprofessor.platformcommons.dagger
 
-import android.content.Context
 import com.google.gson.Gson
-import com.jrprofessor.platformcommons.network.ApiInterface
-import com.jrprofessor.platformcommons.network.MovieInterface
+import com.jrprofessor.platformcommons.network.ApiUserService
+import com.jrprofessor.platformcommons.network.MovieApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -49,14 +48,14 @@ class NetworkModule(
     }
     @Provides
     @Singleton
-    fun provideUserApi(@UserRetrofit  retrofit: Retrofit): ApiInterface {
-        return retrofit.create(ApiInterface::class.java)
+    fun provideUserApi(@UserRetrofit  retrofit: Retrofit): ApiUserService {
+        return retrofit.create(ApiUserService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideMovieApi(@MovieRetrofit retrofit: Retrofit): MovieInterface {
-        return retrofit.create(MovieInterface::class.java)
+    fun provideMovieApi(@MovieRetrofit retrofit: Retrofit): MovieApiService {
+        return retrofit.create(MovieApiService::class.java)
     }
 
     @Provides

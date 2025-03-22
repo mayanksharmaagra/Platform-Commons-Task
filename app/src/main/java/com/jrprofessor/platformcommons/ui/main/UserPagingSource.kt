@@ -2,12 +2,12 @@ package com.jrprofessor.platformcommons.ui.main
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.jrprofessor.platformcommons.network.ApiInterface
+import com.jrprofessor.platformcommons.network.ApiUserService
 import com.jrprofessor.platformcommons.response.User
 import javax.inject.Inject
 
 class UserPagingSource @Inject constructor(
-    private val apiService: ApiInterface
+    private val apiService: ApiUserService
 ) : PagingSource<Int, User>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User> {

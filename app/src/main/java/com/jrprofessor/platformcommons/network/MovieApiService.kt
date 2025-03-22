@@ -2,16 +2,12 @@ package com.jrprofessor.platformcommons.network
 
 import com.jrprofessor.platformcommons.response.MovieDetailsResponse
 import com.jrprofessor.platformcommons.response.MovieListResponse
-import com.jrprofessor.platformcommons.response.UserResponse
-import com.jrprofessor.platformcommons.response.UserSaveResponse
 import retrofit2.Response
-import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface MovieInterface {
+interface MovieApiService {
 
     @GET("3/trending/movie/day")
     suspend fun getMovieList(

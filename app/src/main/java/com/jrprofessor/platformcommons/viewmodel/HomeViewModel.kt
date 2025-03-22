@@ -21,31 +21,12 @@ class HomeViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val databaseRepository: DatabaseRepository
 ) : BaseViewModel() {
-    private val userListObserver by lazy { MutableLiveData<Resource<UserResponse>>() }
-    fun getUserListObserver(): LiveData<Resource<UserResponse>> = userListObserver
-
-    private val movieListObserver by lazy { MutableLiveData<Resource<MovieListResponse>>() }
-    fun getMovieListObserver(): LiveData<Resource<MovieListResponse>> = movieListObserver
 
     private val userSaveObserver by lazy { MutableLiveData<Resource<UserSaveResponse>>() }
     fun getUserSaveObserver(): LiveData<Resource<UserSaveResponse>> = userSaveObserver
 
     private val movieDetailObserver by lazy { MutableLiveData<Resource<MovieDetailsResponse>>() }
     fun getMovieDetailObserver(): LiveData<Resource<MovieDetailsResponse>> = movieDetailObserver
-
-    fun getUsers(page: Int) {
-        launch {
-            userListObserver.value = Resource.loading()
-            userListObserver.value = userRepository.getUser(page)
-        }
-    }
-
-    fun getMovieList(page: Int) {
-        launch {
-            movieListObserver.value = Resource.loading()
-            movieListObserver.value = userRepository.getMovieList(page)
-        }
-    }
 
     fun getMovieDetail(movieId: Int) {
         launch {

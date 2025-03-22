@@ -64,10 +64,6 @@ class HomeFragment : DaggerBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvToolbar.text = requireContext().getString(R.string.user_data)
-        /** call user api*/
-        if (requireActivity().isNetworkActiveWithMessage()) {
-//            viewModel.getUsers(page = 1)
-        }
         /** adapter set and item listener*/
         userAdapter = UserAdapterPaging { user ->
             MovieListActivity.start(requireContext())
@@ -77,32 +73,15 @@ class HomeFragment : DaggerBaseFragment() {
     }
 
     private fun initObserver() {
-        viewModel.getUserListObserver().observe(viewLifecycleOwner) { response ->
-            when (response.status) {
-                Status.LOADING -> {
-                    showLoading()
-                }
-
-                Status.SUCCESS -> {
-                    dismissLoading()
-                    /** update user data*/
-                    if (response.data != null && response.data.user?.isNotEmpty() == true) {
-//                        userAdapter.setUser(response.data.user)
-                    }
-                }
-
-                Status.ERROR -> {
-                    dismissLoading()
-                    requireActivity().shortToast(response.message.toString())
-                }
-            }
-        }
         viewModel.getAllUser().observe(viewLifecycleOwner) { users ->
             Log.e(TAG, "onViewCreated: " + Gson().toJson(users))
         }
+        /** call user api*/
         lifecycleScope.launch {
+            showLoading()
             if(requireActivity().isNetworkActiveWithMessage()) {
                 viewModel.userList.observe(viewLifecycleOwner) { pagingData ->
+                    dismissLoading()
                     userAdapter.submitData(lifecycle, pagingData)
                 }
             }

@@ -2,14 +2,12 @@ package com.jrprofessor.platformcommons.ui.movie
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.jrprofessor.platformcommons.network.ApiInterface
-import com.jrprofessor.platformcommons.network.MovieInterface
+import com.jrprofessor.platformcommons.network.MovieApiService
 import com.jrprofessor.platformcommons.response.Movie
-import com.jrprofessor.platformcommons.response.User
 import javax.inject.Inject
 
 class MoviePagingSource @Inject constructor(
-    private val apiService: MovieInterface
+    private val apiService: MovieApiService
 ) : PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {

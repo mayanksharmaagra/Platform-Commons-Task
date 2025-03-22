@@ -15,10 +15,8 @@ import javax.inject.Singleton
 
 @Singleton
 interface UserRepository {
-    suspend fun getUser(page: Int): Resource<UserResponse>
     fun getUsers(): LiveData<PagingData<User>>
     fun getMovies(): LiveData<PagingData<Movie>>
-    suspend fun getMovieList(page: Int): Resource<MovieListResponse>
     suspend fun getMovieDetail(movieId: Int): Resource<MovieDetailsResponse>
     suspend fun saveUserData(hashMap: HashMap<String, String>): Resource<UserSaveResponse>
 }

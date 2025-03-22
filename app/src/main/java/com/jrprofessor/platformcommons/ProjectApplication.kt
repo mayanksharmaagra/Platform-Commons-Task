@@ -29,7 +29,6 @@ class ProjectApplication : DaggerApplication(), Configuration.Provider {
         super.onCreate()
         val filter = IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         registerReceiver(networkReceiver, filter)
-//        startSyncWorker()
     }
 
     @Inject
@@ -54,21 +53,6 @@ class ProjectApplication : DaggerApplication(), Configuration.Provider {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> = androidInjector
 
-    private fun startSyncWorker() {
-        val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build()
-
-        val workRequest = PeriodicWorkRequestBuilder<SyncWorker>(15, TimeUnit.MINUTES)
-            .setConstraints(constraints)
-            .build()
-
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "SyncWorker",
-            ExistingPeriodicWorkPolicy.KEEP,
-            workRequest
-        )
-    }
     override fun onTerminate() {
         super.onTerminate()
         unregisterReceiver(networkReceiver)

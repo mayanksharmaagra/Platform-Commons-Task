@@ -59,7 +59,6 @@ class MovieListFragment : DaggerBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (requireActivity().isNetworkActiveWithMessage()) viewModel.getMovieList(page = 1)
         binding.tvToolbar.text = requireContext().getString(R.string.movie_list)
         movieAdapter = MovieAdapterPaging { movieId ->
             val fragment = MovieDetailFragment.newInstance(movieId)
@@ -79,25 +78,6 @@ class MovieListFragment : DaggerBaseFragment() {
     }
 
     private fun initObserver() {
-        viewModel.getMovieListObserver().observe(viewLifecycleOwner) { response ->
-            when (response.status) {
-                Status.LOADING -> {
-                    showLoading()
-                }
-
-                Status.SUCCESS -> {
-                    dismissLoading()
-                    if (response.data != null && response.data.movie?.isNotEmpty() == true) {
-//                        movieAdapter.setUser(response.data.movie)
-                    }
-                }
-
-                Status.ERROR -> {
-                    dismissLoading()
-                    requireActivity().shortToast(response.message.toString())
-                }
-            }
-        }
         lifecycleScope.launch {
             if(requireActivity().isNetworkActiveWithMessage()){
                 showLoading()

@@ -2,14 +2,14 @@ package com.jrprofessor.platformcommons.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.jrprofessor.platformcommons.network.ApiInterface
+import com.jrprofessor.platformcommons.network.ApiUserService
 import com.jrprofessor.platformcommons.roomdb.UserDao
 import com.jrprofessor.platformcommons.roomdb.UserEntity
 import javax.inject.Inject
 
 class DatabaseRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
-    private val userApi: ApiInterface,
+    private val userApi: ApiUserService,
 ) :
     DatabaseRepository {
     override suspend fun insertData(userEntity: UserEntity) {
