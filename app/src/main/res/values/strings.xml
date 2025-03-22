@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Platform Commons Project</string>
+    <string name="connection_error_message">Connection Error</string>
+    <string name="two_dynamic_value">%1$s %2$s</string>
+    <string name="movie_list">Movie List</string>
+    <string name="user_data">User Data</string>
 </resources>

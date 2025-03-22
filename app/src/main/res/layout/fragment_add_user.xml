@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/tvToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Add User"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/drawable_grey_radius_8dp"
+                    android:fontFamily="monospace"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:paddingVertical="13dp"
+                    android:paddingStart="10dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/etJob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/drawable_grey_radius_8dp"
+                    android:fontFamily="monospace"
+                    android:hint="Job"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:paddingVertical="13dp"
+                    android:paddingStart="10dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Submit"
+                    android:textSize="16sp"
+                    android:minWidth="0dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:minHeight="0dp"
+                    android:id="@+id/btnSubmit"
+                    app:cornerRadius="10dp"
+                    app:backgroundTint="#A22650" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+</layout>
